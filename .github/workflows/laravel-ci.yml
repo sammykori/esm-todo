@@ -52,6 +52,9 @@ jobs:
                   DB_USERNAME: postgres
                   DB_PASSWORD: password
 
+            - name: Build assets
+              run: npm run build
+
             - name: Run PHP tests
               run: php artisan test
 
