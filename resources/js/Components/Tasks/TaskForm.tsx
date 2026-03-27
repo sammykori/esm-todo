@@ -51,8 +51,10 @@ export default function TaskForm({
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
       {/* Title */}
       <div className="flex flex-col gap-1">
-        <label className="text-sm font-medium">Title</label>
-        <Input {...register('title')} placeholder="Task title" />
+        <label htmlFor="title" className="text-sm font-medium">
+          Title
+        </label>
+        <Input id="title" {...register('title')} placeholder="Task title" />
         {errors.title && (
           <p className="text-xs text-destructive">{errors.title.message}</p>
         )}
