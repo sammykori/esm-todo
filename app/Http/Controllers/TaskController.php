@@ -25,7 +25,7 @@ class TaskController extends Controller
         $tasks = $this->taskService->getAllTasks();
 
         return Inertia::render('Tasks/Index', [
-            'tasks' => TaskResource::collection($tasks),
+            'tasks' => TaskResource::collection($tasks)->resolve(),
         ]);
     }
 
