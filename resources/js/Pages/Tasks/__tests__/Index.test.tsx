@@ -63,7 +63,7 @@ function setupPage(tasks: Task[] = mockTasks) {
       flash: undefined,
       auth: { user: { id: 1, name: 'Test', email: 't@t.com' } },
     },
-  } as ReturnType<typeof usePage>);
+  } as unknown as ReturnType<typeof usePage>);
 }
 
 describe('Tasks/Index', () => {
