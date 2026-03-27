@@ -1,14 +1,14 @@
 import { Link, usePage } from '@inertiajs/react';
 
 import { Alert, AlertDescription } from '@/Components/ui/alert';
-import { Button } from '@/Components/ui/button';
 import { PageProps } from '@/types/task';
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  actions?: React.ReactNode;
 }
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default function AppLayout({ children, actions }: AppLayoutProps) {
   const { flash } = usePage<PageProps>().props;
 
   return (
@@ -21,9 +21,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
           >
             Task Manager
           </Link>
-          <Button asChild size="sm">
-            <Link href={route('tasks.create')}>New Task</Link>
-          </Button>
+          {actions && <div className="flex items-center gap-2">{actions}</div>}
         </div>
       </header>
 

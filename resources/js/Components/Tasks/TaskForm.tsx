@@ -20,6 +20,8 @@ interface TaskFormProps {
   onSubmit: (values: TaskFormValues) => void;
   isSubmitting: boolean;
   submitLabel: string;
+  /** Set to false to hide the Cancel link (e.g. when inside a Sheet) */
+  showCancel?: boolean;
 }
 
 export default function TaskForm({
@@ -27,6 +29,7 @@ export default function TaskForm({
   onSubmit,
   isSubmitting,
   submitLabel,
+  showCancel = true,
 }: TaskFormProps) {
   const {
     register,
@@ -135,12 +138,14 @@ export default function TaskForm({
         {isSubmitting ? 'Saving…' : submitLabel}
       </Button>
 
-      <Link
-        href={route('tasks.index')}
-        className="text-center text-sm text-muted-foreground hover:underline"
-      >
-        Cancel
-      </Link>
+      {showCancel && (
+        <Link
+          href={route('tasks.index')}
+          className="text-center text-sm text-muted-foreground hover:underline"
+        >
+          Cancel
+        </Link>
+      )}
     </form>
   );
 }
