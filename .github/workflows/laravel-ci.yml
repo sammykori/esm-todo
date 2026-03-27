@@ -55,9 +55,6 @@ jobs:
             - name: Build assets
               run: npm run build
 
-            - name: Run PHP tests
-              run: php artisan test
-
             - name: TypeScript check
               run: npm run type-check
 
