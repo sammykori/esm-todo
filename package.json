@@ -34,8 +34,7 @@
             "./vendor/bin/pint --dirty"
         ],
         "**/*.{js,jsx,ts,tsx,vue}": [
-            "npx prettier --write",
-            "npx eslint --fix"
+            "npx prettier --write"
         ]
     }
 }
