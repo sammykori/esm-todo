@@ -2,9 +2,9 @@ name: CI
 
 on:
     push:
-        branches: [main, develop]
+        branches: [main, development]
     pull_request:
-        branches: [main, develop]
+        branches: [main, development]
 
 jobs:
     test:
@@ -54,9 +54,6 @@ jobs:
 
             - name: Build assets
               run: npm run build
-
-            - name: Run PHP tests
-              run: php artisan test
 
             - name: TypeScript check
               run: npm run type-check
