@@ -27,36 +27,37 @@ function SheetPortal({
   return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
 }
 
-function SheetOverlay({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Overlay>) {
-  return (
-    <SheetPrimitive.Overlay
-      data-slot="sheet-overlay"
-      className={cn(
-        'fixed inset-0 z-50 bg-black/80 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
-        className
-      )}
-      {...props}
-    />
-  );
-}
+const SheetOverlay = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Overlay>,
+  React.ComponentProps<typeof SheetPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <SheetPrimitive.Overlay
+    ref={ref}
+    data-slot="sheet-overlay"
+    className={cn(
+      'fixed inset-0 z-50 bg-black/80 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0',
+      className
+    )}
+    {...props}
+  />
+));
+SheetOverlay.displayName = 'SheetOverlay';
 
-function SheetContent({
-  className,
-  children,
-  side = 'right',
-  showCloseButton = true,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Content> & {
-  side?: 'top' | 'right' | 'bottom' | 'left';
-  showCloseButton?: boolean;
-}) {
-  return (
+const SheetContent = React.forwardRef<
+  React.ElementRef<typeof SheetPrimitive.Content>,
+  React.ComponentProps<typeof SheetPrimitive.Content> & {
+    side?: 'top' | 'right' | 'bottom' | 'left';
+    showCloseButton?: boolean;
+  }
+>(
+  (
+    { className, children, side = 'right', showCloseButton = true, ...props },
+    ref
+  ) => (
     <SheetPortal>
       <SheetOverlay />
       <SheetPrimitive.Content
+        ref={ref}
         data-slot="sheet-content"
         data-side={side}
         className={cn(
@@ -80,8 +81,9 @@ function SheetContent({
         )}
       </SheetPrimitive.Content>
     </SheetPortal>
-  );
-}
+  )
+);
+SheetContent.displayName = 'SheetContent';
 
 function SheetHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
