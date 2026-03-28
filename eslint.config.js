@@ -23,6 +23,7 @@ export default tseslint.config(
       ...hooksPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off', // Not needed in modern React/Vite
       '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
     settings: {
       react: { version: 'detect' },
@@ -30,6 +31,11 @@ export default tseslint.config(
   },
   prettierConfig, // Always put Prettier last to disable conflicting rules
   {
-    ignores: ['vendor/**', 'public/build/**', 'node_modules/**'],
+    ignores: [
+      'vendor/**',
+      'public/build/**',
+      'node_modules/**',
+      'bootstrap/ssr/**',
+    ],
   }
 );
