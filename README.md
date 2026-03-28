@@ -1,6 +1,6 @@
 # ESM Task Manager
 
-A full-stack Task / To-Do Manager built as a technical assessment for Earthstorm Media.
+A full-stack Task / To-Do Manager built as a technical assessment for Earthstorm Media Technical Test.
 Built with Laravel 11, Inertia.js, React, TypeScript, and PostgreSQL.
 
 ---
@@ -83,6 +83,12 @@ php artisan serve
 
 ```bash
 npm run dev
+```
+
+To see SSR in action, run in another terminal:
+
+```bash
+php artisan inertia:start-ssr
 ```
 
 Visit [http://localhost:8000](http://localhost:8000)
@@ -172,7 +178,7 @@ definition, not scattered across components.
 
 ```
 Pages/          — receive Inertia props, compose layout, no logic
-Components/     — domain components (TaskForm, TaskTable, TaskStatusBadge)
+Components/     — domain components (TaskForm, TaskTable, TaskStatusBadge, TaskColumns, TaskTablePriority, TaskSheet)
 Components/UI/  — generic primitives with no domain knowledge
 schemas/        — Zod validation schemas, single source of truth
 types/          — TypeScript interfaces and status/priority constants
