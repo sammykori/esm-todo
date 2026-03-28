@@ -60,11 +60,7 @@ Open `.env` and set your PostgreSQL credentials:
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-<<<<<<< HEAD
 DB_DATABASE=esm_todo
-=======
-DB_DATABASE=task_manager
->>>>>>> 72fc8a4832f1099ede01454ff1e09b016a6b5288
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
@@ -110,6 +106,7 @@ The pipeline:
 - Spins up a PostgreSQL service container
 - Installs PHP and Node dependencies
 - Runs database migrations against the test database
+- Runs UI component tests
 - Runs TypeScript type checking
 - Runs ESLint
 
@@ -119,11 +116,17 @@ The pipeline:
 
 ### Why Inertia.js instead of a separate API?
 
-The brief called for a backend API or server-rendered pages. Inertia.js is a
-considered middle ground. Laravel handles routing, controllers, validation, and
+The brief called for a backend API or server-rendered pages. Inertia.js satisfies
+the SSR requirement fully. Laravel handles routing, controllers, validation, and
 data fetching exactly as it would for a traditional server-rendered app. Instead
-of returning a Blade view, controllers return an Inertia response that renders a
-React component with typed props.
+of returning a Blade view, controllers return an Inertia response that is rendered
+to full HTML by a Node.js SSR server before reaching the browser.
+
+This means the first page load delivers completely server-rendered HTML. Crawlable,
+fast to paint, and indistinguishable from a traditional server-rendered page. React
+then hydrates on the client, giving subsequent navigation the speed of a SPA without
+sacrificing the first-load benefits of SSR. The root route serves the task list
+directly with no redirect, keeping the initial response as lean as possible.
 
 This means:
 
