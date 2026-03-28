@@ -60,7 +60,11 @@ Open `.env` and set your PostgreSQL credentials:
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
+<<<<<<< HEAD
 DB_DATABASE=esm_todo
+=======
+DB_DATABASE=task_manager
+>>>>>>> 72fc8a4832f1099ede01454ff1e09b016a6b5288
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
